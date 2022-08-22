@@ -8,7 +8,8 @@ class Tester:
         for cmd in command[0]['commands']:
             if len(cmd['arguments'][0])>1:
                 router.write(str(cmd['command'] + '\r').encode())
-                router.write(str(cmd['arguments'][0]).encode())
+                time.sleep(0.5)
+                router.write(str(cmd['arguments'][0]).encode() + b'\r')
                 time.sleep(0.5)
                 router.write(chr(26).encode())
             else:
