@@ -1,0 +1,254 @@
+{
+   "TRM240":[
+      {"commands":[
+         {
+            "command" : "ATE1",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CMGF=1",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CMGS=\"+3706XXXXXXX\"",
+            "arguments" :
+            [
+               "Hello world! \r"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+GMM",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CGMI",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CGMM",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CGMR",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+GSN",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CGSN",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT&F",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT&V",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT&W",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "ATQ",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CPAS",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CEER",
+            "arguments" :
+            [
+               ""
+            ],
+            "expects" : "OK"
+         }
+         
+      ]
+   }
+   ],
+   "RUTX11":[
+      {"commands":[
+         {
+            "command" : "ATE",
+            "arguments" :
+            [
+               "1"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "ATI",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+GMI",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+GMM",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CGMI",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CGMM",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CGMR",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+GSN",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CGSN",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT&F",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT&V",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT&W",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "ATQ",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CPAS",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         },
+         {
+            "command" : "AT+CEER",
+            "arguments" :
+            [
+               "None"
+            ],
+            "expects" : "OK"
+         }
+         
+      ]
+   }
+   ]
+ }
