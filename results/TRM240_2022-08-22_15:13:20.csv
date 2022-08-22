@@ -1,0 +1,16 @@
+Command,Expected,Response,Test
+ATE1,OK,OK,Passed
+AT+CMGF=1,OK,OK,Passed
+AT+CMGS=+3706XXXXXXX,OK,ERROR,Failed
+ATE1,OK,OK,Passed
+AT+CGMI,OK,OK,Passed
+AT+CGMM,OK,OK,Passed
+AT+CGMR,OK,OK,Passed
+AT+GSN,OK,OK,Passed
+AT+CGSN,OK,OK,Passed
+AT&F,OK,OK,Passed
+AT&V,OK,OK,Passed
+AT&W,OK,OK,Passed
+ATQ,OK,OK,Passed
+AT+CPAS,OK,OK,Passed
+AT+CEER,OK,OK,Passed
