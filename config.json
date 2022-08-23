@@ -1,254 +1,231 @@
 {
-   "TRM240":[
-      {"commands":[
+   "TRM240": {
+      "authentication": {
+         "type" : "serial",
+         "port" : "/dev/ttyUSB2",
+         "baud_rate" : "115200"
+      },
+      "commands": [
          {
-            "command" : "ATE1",
-            "arguments" :
-            [
+            "command": "ATE1",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT+CMGF=1",
-            "arguments" :
-            [
+            "command": "AT+CMGF=1",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT+CMGS=\"+3706XXXXXXX\"",
-            "arguments" :
-            [
-               "Hello world!"
+            "command": "AT+CMGS=\"+3706XXXXXXX\"",
+            "arguments": [
+               "Text message!"
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT+GMM",
-            "arguments" :
-            [
+            "command": "ATE1",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT+CGMI",
-            "arguments" :
-            [
+            "command": "AT+CGMI",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT+CGMM",
-            "arguments" :
-            [
+            "command": "AT+CGMM",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT+CGMR",
-            "arguments" :
-            [
+            "command": "AT+CGMR",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT+GSN",
-            "arguments" :
-            [
+            "command": "AT+GSN",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT+CGSN",
-            "arguments" :
-            [
+            "command": "AT+CGSN",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT&F",
-            "arguments" :
-            [
+            "command": "AT&F",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT&V",
-            "arguments" :
-            [
+            "command": "AT&V",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT&W",
-            "arguments" :
-            [
+            "command": "AT&W",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "ATQ",
-            "arguments" :
-            [
+            "command": "ATQ",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT+CPAS",
-            "arguments" :
-            [
+            "command": "AT+CPAS",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          },
          {
-            "command" : "AT+CEER",
-            "arguments" :
-            [
+            "command": "AT+CEER",
+            "arguments": [
                ""
             ],
-            "expects" : "OK"
+            "expects": "OK"
          }
-         
+      ]
+   },
+   "RUTX11": {
+      "authentication": {
+         "type" : "SSH",
+         "address" : "192.168.1.1",
+         "username" : "root",
+         "password" : "Admin123"
+      },
+      "commands": [
+         {
+            "command": "ATE1",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT+CMGF=1",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT+CMGS=\"+3706XXXXXXX\"",
+            "arguments": [
+               "Text message!"
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "ATE1",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT+CGMI",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT+CGMM",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT+CGMR",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT+GSN",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT+CGSN",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT&F",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT&V",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT&W",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "ATQ",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT+CPAS",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         },
+         {
+            "command": "AT+CEER",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         }
       ]
    }
-   ],
-   "RUTX11":[
-      {"commands":[
-         {
-            "command" : "ATE",
-            "arguments" :
-            [
-               "1"
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "ATI",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT+GMI",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT+GMM",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT+CGMI",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT+CGMM",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT+CGMR",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT+GSN",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT+CGSN",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT&F",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT&V",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT&W",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "ATQ",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT+CPAS",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         },
-         {
-            "command" : "AT+CEER",
-            "arguments" :
-            [
-               ""
-            ],
-            "expects" : "OK"
-         }
-         
-      ]
-   }
-   ]
- }
+}
