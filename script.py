@@ -3,20 +3,21 @@ from modules.initializer import Initializer
 from modules.write_to_file import WriteToFile
 from modules.tester import Tester
 import time
+import argparse
+
+def arg_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-IP', type=str, help="Devices SSH connection IP address", required=False)
+    parser.add_argument('-u', type=str, help="Devices SSH connection username", required=False)
+    parser.add_argument('-psw', type=str, help="Devices SSH connection password", required=False)
+    parser.add_argument('-b', type=int, help="Devices Serial connection baud rate", required=False)
+    parser.add_argument('-port', type=str, help="Devices connection port", required=False)
+    parser.add_argument('device', type=str, help="Device name for script to test it")
+    args = parser.parse_args()
+    return args
 
 command = ConfigHandler()
-router_name = Initializer().router_info()
-router = Initializer().initializer(command.get_param(router_name)['authentication'])
-# response = Tester().serial_tester(command.get_param(router_name), router, router_name)
-# WriteToFile().writetofile(response, router_name)
-stdin, stdout, stderr = router.exec_command('/etc/init.d/gsmd stop')
-stdin.close()
-print(stdout.readlines())
-stdin, stdout, stderr = router.exec_command('socat /dev/tty,raw,echo=0,escape=0x03 /dev/ttyUSB3,raw,setsid,sane,echo=0,nonblock ; stty sane\r')
-stdin.close()
-print(stdout.readlines())
-stdin, stdout, stderr = router.exec_command('ls')
-time.sleep(5)
-stdin.close()
-for line in stdout.read().splitlines():
-    print(line)
+input = arg_parser()
+router_name = input.device.upper()
+response = Tester().chooser(command.get_param(router_name)['authentication'], command.get_param(router_name), router_name, input)
+WriteToFile().writetofile(response, router_name)
