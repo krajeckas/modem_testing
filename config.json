@@ -2,8 +2,10 @@
    "TRM240": {
       "authentication": {
          "type" : "serial",
-         "port" : "/dev/ttyUSB2",
-         "baud_rate" : "115200"
+         "default_port" : "/dev/ttyUSB2",
+         "default_baud_rate" : "115200",
+         "port" : "",
+         "baud_rate" : ""
       },
       "commands": [
          {
@@ -23,7 +25,7 @@
          {
             "command": "AT+CMGS=\"+3706XXXXXXX\"",
             "arguments": [
-               "Text message!"
+               "TRM240"
             ],
             "expects": "OK"
          },
@@ -116,9 +118,14 @@
    "RUTX11": {
       "authentication": {
          "type" : "SSH",
-         "address" : "192.168.1.1",
-         "username" : "root",
-         "password" : "Admin123"
+         "default_address" : "192.168.1.1",
+         "default_username" : "root",
+         "default_password" : "Admin123",
+         "default_port" : "/dev/ttyUSB3",
+         "address" : "192.168.2.1",
+         "username" : "",
+         "password" : "",
+         "port" : ""
       },
       "commands": [
          {
@@ -138,7 +145,8 @@
          {
             "command": "AT+CMGS=\"+3706XXXXXXX\"",
             "arguments": [
-               "Text message!"
+               "RUTX11",
+               "Rutrut"
             ],
             "expects": "OK"
          },
