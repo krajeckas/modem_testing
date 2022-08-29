@@ -35,14 +35,14 @@ This script is used to automaticaly test AT commands on different routers via SS
 ```json
     "authentication": {
         "type" : "SSH",
-        "default_address" : "192.168.1.1",  Devices default IP address for SSH connection
-        "default_username" : "root",        Devices default user for SSH connection
-        "default_password" : "Admin123",    Devices default password for SSH connection
-        "default_port" : "/dev/ttyUSB3",    Devices default port for AT commands
-        "address" : "192.168.2.1",          Configured IP address for SSH connection
-        "username" : "",                    Configured username for SSH connection
-        "password" : "",                    Configured password for SSH connection
-        "port" : ""                         Configured port for AT commands
+        "default_address" : "192.168.1.1",  //Devices default IP address to use if address lower is not written and is not given as argument starting script for SSH connection
+        "default_username" : "root",        //Devices default user to use if username lower is not written and is not given as argument starting script for SSH connection
+        "default_password" : "Admin123",    //Devices default password to use if password lower is not written and is not given as argument starting script for SSH connection
+        "default_port" : "/dev/ttyUSB3",    //Devices default port to use if port lower is not written and is not given as argument starting script for AT commands
+        "address" : "192.168.2.1",          //Configured IP address for SSH connection
+        "username" : "",                    //Configured username for SSH connection
+        "password" : "",                    //Configured password for SSH connection
+        "port" : ""                         //Configured port for AT commands
     }, 
 ```
 
@@ -50,10 +50,10 @@ This script is used to automaticaly test AT commands on different routers via SS
 ```json
     "authentication": {
         "type" : "serial",                  
-        "default_port" : "/dev/ttyUSB3",    Devices default port for serial connection
-        "default_baud_rate" : "115200",     Devices default baud rate for serial connection
-        "port" : "",                        Configured port for serial connection
-        "baud_rate" : ""                    Configured baud rate for serial connection
+        "default_port" : "/dev/ttyUSB3",    //Devices default port to use if port lower is not written and is not given as argument starting script for serial connection
+        "default_baud_rate" : "115200",     //Devices default baud rate to use if baud_rate lower is not written and is not given as argument starting script for serial connection
+        "port" : "",                        //Configured port for serial connection
+        "baud_rate" : ""                    //Configured baud rate for serial connection
     },
 ```
 ---
