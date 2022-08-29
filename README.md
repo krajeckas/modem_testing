@@ -59,6 +59,107 @@ This script is used to automaticaly test AT commands on different routers via SS
 ---
 ## How to edit configuration file to your needs
 
+### Example of how router to connect via Serial configuration should be written
+
+```json
+{
+   "TRM240": {
+      "authentication": {
+         "type" : "serial",
+         "default_port" : "/dev/ttyUSB3",
+         "default_baud_rate" : "115200",
+         "port" : "",
+         "baud_rate" : ""
+      },
+      "commands": [
+         {
+            "command": "ATE1",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         }
+      ]
+   }
+}
+```
+
+### Example of how router to connect via SSH configuration should be written
+
+```json
+{
+    "RUTX11": {
+        "authentication": {
+            "type" : "SSH",
+            "default_address" : "192.168.1.1",
+            "default_username" : "root",
+            "default_password" : "Admin123",
+            "default_port" : "/dev/ttyUSB3",
+            "address" : "",
+            "username" : "",
+            "password" : "",
+            "port" : ""
+        },
+        "commands": [
+            {
+                "command": "ATE1",
+                "arguments": [
+                ""
+                ],
+                "expects": "OK"
+            }
+        ]
+    }
+}
+```
+
+### Example of how multiple routers should be written
+
+```json
+{
+   "TRM240": {
+      "authentication": {
+         "type" : "serial",
+         "default_port" : "/dev/ttyUSB3",
+         "default_baud_rate" : "115200",
+         "port" : "",
+         "baud_rate" : ""
+      },
+      "commands": [
+         {
+            "command": "ATE1",
+            "arguments": [
+               ""
+            ],
+            "expects": "OK"
+         }
+      ]
+   },
+   "RUTX11": {
+        "authentication": {
+            "type" : "SSH",
+            "default_address" : "192.168.1.1",
+            "default_username" : "root",
+            "default_password" : "Admin123",
+            "default_port" : "/dev/ttyUSB3",
+            "address" : "",
+            "username" : "",
+            "password" : "",
+            "port" : ""
+        },
+        "commands": [
+            {
+                "command": "ATE1",
+                "arguments": [
+                ""
+                ],
+                "expects": "OK"
+            }
+        ]
+    }
+}
+```
+
 ### Example of how command should be written
 
 ```json
@@ -73,7 +174,7 @@ This script is used to automaticaly test AT commands on different routers via SS
     ]
 ```
 
-### Example to add commands
+### Example of how multiple commands should be written
 
 ```json
     "commands": [
@@ -94,9 +195,30 @@ This script is used to automaticaly test AT commands on different routers via SS
     ]
 ```
 
+### Example of how arguments should be written
+
+```json
+    "commands": [
+         {
+            "command": "AT+CMGS=\"+3706XXXXXXX\"",
+            "arguments": [
+               "TRM240",
+
+            ],
+            "expects": "OK"
+         }
+    ]
+```
+
+### What expects can be written
+
+- ERORR
+- OK
+- NO CARIER
+
 ### <span style="color:red">Warning!</span>
 
-Added commands to configuration file should be in line with other commands otherwise it will not work
+Added routers, commands or arguments to configuration file should be in line with other routers, commands or arguments otherwise it will not work
 
 ### <a href=#example-to-add-commands style="color: Green;">Click to see example of how it should be</a>
 
