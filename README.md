@@ -32,7 +32,7 @@ This script is used to automaticaly test AT commands on different routers via SS
 ### Config arguments
 
 #### SSH arguments
-```json
+```jsonc
     "authentication": {
         "type" : "SSH",
         "default_address" : "192.168.1.1",  //Devices default IP address to use if address lower is not written and is not given as argument starting script for SSH connection
@@ -47,7 +47,7 @@ This script is used to automaticaly test AT commands on different routers via SS
 ```
 
 #### Serial arguments
-```json
+```jsonc
     "authentication": {
         "type" : "serial",                  
         "default_port" : "/dev/ttyUSB3",    //Devices default port to use if port lower is not written and is not given as argument starting script for serial connection
