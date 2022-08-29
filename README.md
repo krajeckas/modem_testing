@@ -35,7 +35,7 @@ This script is used to automaticaly test AT commands on different routers via SS
 ```jsonc
     "authentication": {
         "type" : "SSH",
-        "default_address" : "192.168.1.1",  //Devices default IP address to use if address lower is not written and is not given as argument starting script for SSH connection
+        "default_address" : "192.168.1.1",  Devices default IP address to use if address lower is not written and is not given as argument starting script for SSH connection
         "default_username" : "root",        //Devices default user to use if username lower is not written and is not given as argument starting script for SSH connection
         "default_password" : "Admin123",    //Devices default password to use if password lower is not written and is not given as argument starting script for SSH connection
         "default_port" : "/dev/ttyUSB3",    //Devices default port to use if port lower is not written and is not given as argument starting script for AT commands
