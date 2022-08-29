@@ -2,7 +2,7 @@
    "TRM240": {
       "authentication": {
          "type" : "serial",
-         "default_port" : "/dev/ttyUSB2",
+         "default_port" : "/dev/ttyUSB3",
          "default_baud_rate" : "115200",
          "port" : "",
          "baud_rate" : ""
@@ -151,7 +151,7 @@
             "expects": "OK"
          },
          {
-            "command": "ATE1",
+            "command": "AT+COPS=?",
             "arguments": [
                ""
             ],
