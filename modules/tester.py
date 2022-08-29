@@ -1,6 +1,7 @@
 import time
 import re
 import sys
+from os import system
 from modules.resulter import ResultHandler
 from modules.initializer import Initializer
 
@@ -52,13 +53,17 @@ class Tester:
         result = ResultHandler()
         try:
             router.write(b'ATE1\r')
+            cmd_count = 0
             for cmd in command['commands']:
                 attempts = 0
                 success = False
                 while attempts < 5 and not success:
                     try:
+                        result.info(router_name, str(len(command['commands'])))
+                        print(cmd['command'] + '\n')
                         msg = self.send_serial_command(cmd, router)
-                        response.append(self.send_serial_result(msg, cmd, router_name, command, result))
+                        response.append(self.send_serial_result(msg, cmd, result))
+                        time.sleep(1)
                         success = True
                     except (IndexError, OSError):
                         attempts += 1
@@ -78,14 +83,18 @@ class Tester:
     def execute_ssh_commands(self, router, command, router_name, type, input):
         response = []
         result = ResultHandler()
+        test_result = '0'
         for cmd in command['commands']:
             attempts = 0
             success = False
             while attempts < 5 and not success:
                 try:
+                    result.info(router_name, str(len(command['commands'])))
+                    print(cmd['command'] + '\n')
                     msg = self.send_ssh_command(cmd, router)
-                    response.append(self.send_ssh_result(msg, cmd, router_name, command, result))
+                    response.append(self.send_ssh_result(msg, cmd, result))
                     success = True
+                    time.sleep(1)
                 except (IndexError, OSError):
                     attempts += 1
                     print('Error retrying attempt = ' + str(attempts))
@@ -98,7 +107,6 @@ class Tester:
         return response
 
     def send_serial_command(self, cmd, router):
-
         if len(cmd['arguments'][0])>1:
             router.write(str(cmd['command'] + '\r').encode())
             time.sleep(1)
@@ -109,18 +117,8 @@ class Tester:
         else:
             router.write((str(cmd['command']) + '\r').encode())
             time.sleep(1)
-        msg = router.readall().decode().split("\r\n")
+        msg = self.serial_response_timeout(router)
         return msg
-
-    def send_serial_result(self, msg, cmd, router_name, command, result):
-        if msg[-2] == cmd['expects']:
-            test_result = True
-            result.info(router_name, test_result, str(len(command['commands'])))
-            return result.results_pass(cmd['command'], msg[-2], cmd['expects'])
-        else:
-            test_result = False
-            result.info(router_name, test_result, str(len(command['commands'])))
-            return result.results_fail(cmd['command'], msg[-2], cmd['expects'])
                     
     def send_ssh_command(self, cmd, router):
         if len(cmd['arguments'][0])>1:
@@ -134,19 +132,53 @@ class Tester:
         else:
             router.send(cmd['command'] + '\r')
             time.sleep(1)
-        text = router.recv(-1).decode().split('\n\n\n')
-        msg = re.split("\n\n\n\n|\n\n\n|\n\n|\n", text[-1])[-2]
+        msg = self.ssh_response_timeout(router)
         return msg
 
-    def send_ssh_result(self, msg, cmd, router_name, command, result):
+    def serial_response_timeout(self, router):
+        timeout = time.time()+180
+        while time.time()<timeout:
+            txt = router.read()
+            time.sleep(1)
+            waiting_byte = router.inWaiting()
+            txt += router.read(waiting_byte)
+            if txt and ((b'\r\n\r\n' in txt) or (b'\r\r\n' in txt)):
+                msg = txt.decode().split("\r\n")
+                break
+            else:
+                msg = 'Timeout'
+        return msg
+
+    def send_serial_result(self, msg, cmd, result):
+        try:
+            if msg[-2] == cmd['expects']:
+                test_result = True
+                results = result.results_pass(cmd['command'], msg[-2], cmd['expects'], test_result)
+            else:
+                test_result = False
+                results = result.results_fail(cmd['command'], msg[-2], cmd['expects'], test_result)
+        except IndexError:
+            pass
+        return results
+
+    def ssh_response_timeout(self, router):
+        timeout = time.time()+180
+        while time.time()<timeout:
+            text = router.recv(-1)
+            if text and (b'\n\n\n' in text):
+                msg = text.decode().split('\n\n\n')[-1].replace('\n', '')
+                break
+            else:
+                msg = 'Timeout'
+        return msg
+
+    def send_ssh_result(self, msg, cmd, result):
         if msg == cmd['expects']:
             test_result = True
-            result.info(router_name, test_result, str(len(command['commands'])))
-            return result.results_pass(cmd['command'], msg, cmd['expects'])
+            return result.results_pass(cmd['command'], msg, cmd['expects'], test_result)
         else:
             test_result = False
-            result.info(router_name, test_result, str(len(command['commands'])))
-            return result.results_fail(cmd['command'], msg, cmd['expects'])
+            return result.results_fail(cmd['command'], msg, cmd['expects'], test_result)
 
     def close_connection(self, router):
         router.close()
