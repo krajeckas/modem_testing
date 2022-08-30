@@ -35,14 +35,14 @@ This script is used to automaticaly test AT commands on different routers via SS
 ```jsonc
     "authentication": {
         "type" : "SSH",
-        "default_address" : "192.168.1.1",  //Devices default IP address to use if address lower is not written and is not given as argument starting script for SSH connection
-        "default_username" : "root",        //Devices default user to use if username lower is not written and is not given as argument starting script for SSH connection
-        "default_password" : "Admin123",    //Devices default password to use if password lower is not written and is not given as argument starting script for SSH connection
-        "default_port" : "/dev/ttyUSB3",    //Devices default port to use if port lower is not written and is not given as argument starting script for AT commands
-        "address" : "192.168.2.1",          //Configured IP address credentials for SSH connection starting script
-        "username" : "",                    //Configured username for SSH credentials for SSH connection starting script
-        "password" : "",                    //Configured password credentials for SSH connection starting script
-        "port" : ""                         //Configured port for AT commands starting Serial connection
+        "default_address" : "192.168.1.1",  Devices default IP address to use if address lower is not written and is not given as argument starting script for SSH connection
+        "default_username" : "root",        Devices default user to use if username lower is not written and is not given as argument starting script for SSH connection
+        "default_password" : "Admin123",    Devices default password to use if password lower is not written and is not given as argument starting script for SSH connection
+        "default_port" : "/dev/ttyUSB3",    Devices default port to use if port lower is not written and is not given as argument starting script for AT commands
+        "address" : "192.168.2.1",          Configured IP address credentials for SSH connection starting script
+        "username" : "",                    Configured username for SSH credentials for SSH connection starting script
+        "password" : "",                    Configured password credentials for SSH connection starting script
+        "port" : ""                         Configured port for AT commands starting Serial connection
     }, 
 ```
 
@@ -50,10 +50,10 @@ This script is used to automaticaly test AT commands on different routers via SS
 ```jsonc
     "authentication": {
         "type" : "serial",                  
-        "default_port" : "/dev/ttyUSB3",    //Devices default port to use if port lower is not written and is not given as argument starting script for serial connection
-        "default_baud_rate" : "115200",     //Devices default baud rate to use if baud_rate lower is not written and is not given as argument starting script for serial connection
-        "port" : "",                        //Configured port for serial connection starting script
-        "baud_rate" : ""                    //Configured baud rate for serial connection starting script
+        "default_port" : "/dev/ttyUSB3",    Devices default port to use if port lower is not written and is not given as argument starting script for serial connection
+        "default_baud_rate" : "115200",     Devices default baud rate to use if baud_rate lower is not written and is not given as argument starting script for serial connection
+        "port" : "",                        Configured port for serial connection starting script
+        "baud_rate" : ""                    Configured baud rate for serial connection starting script
     },
 ```
 ---
@@ -244,6 +244,12 @@ Added routers, commands or arguments to configuration file should be in line wit
 ```
 ---
 ## How to start this script
+
+### To start this script first install pyserial with this command
+
+```bash
+    pip install pyserial
+```
 
 ### To start script use this command
 
